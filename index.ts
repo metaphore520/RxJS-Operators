@@ -39,7 +39,7 @@ import {
   takeWhile,
   share,
   groupBy,
-  pluck
+  pluck,
 } from 'rxjs';
 
 // of('World')
@@ -283,20 +283,45 @@ result.subscribe(x => console.log(x));
 //   tap((x) => console.log(x))
 // ); //.subscribe();
 
-
 // const source= from([
 // {Title: 'main',BookName : 'Tom'},
 // {Title: 'main2',BookName : 'Tom4'},
-// ]); 
-
+// ]);
 
 const source = from([
   { name: 'Joe', age: 30, job: { title: 'Developer', language: 'JavaScript' } },
   //will return undefined when no job is found
-  { name: 'Sarah', age: 35 }
+  { name: 'Sarah', age: 35 },
 ]);
 
-
-
-source.pipe(pluck('job','title'));
+source.pipe(pluck('job', 'title'));
 //.subscribe(x => console.log(x))
+
+//
+//var num = Math.random();
+// Cold Observable
+var obs = Observable.create((subs) => subs.next(Math.random()));
+
+//obs.subscribe(x => console.log(x));
+//obs.subscribe(x => console.log(x));
+
+// Hot Observable
+// var num = Math.random();
+// var obs = Observable.create((subs) => subs.next(num));
+
+// obs.subscribe(x => console.log(x));
+// obs.subscribe(x => console.log(x));
+
+const observable = fromEvent(document, 'click');
+
+// subscription 1
+// observable.subscribe((x) => {
+//   console.log(x.target); // x position of click
+// });
+
+// // // subscription 2
+// observable.subscribe((x) => {
+//   console.log(x.target); // y position of click
+// });
+
+//var cold = obs.pipe(share());
