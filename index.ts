@@ -198,6 +198,7 @@ of('A', 'B').pipe(
     )
   )
 );
+//.subscribe(console.log);
 
 of(1, 2, 3, 4, 5, 6).pipe(
   mergeMap((x) => (x < 6 ? of(x) : throwError(() => 'Error'))),
