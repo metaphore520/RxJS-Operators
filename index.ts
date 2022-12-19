@@ -210,7 +210,7 @@ of('A', 'B').pipe(
   concatMap((x) =>
     interval(1000).pipe(
       map((y) => x + ' ' + y),
-      take(2),
+      take(5),
       toArray()
     )
   )
