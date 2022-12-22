@@ -326,3 +326,16 @@ const observable = fromEvent(document, 'click');
 // });
 
 //var cold = obs.pipe(share());
+
+
+
+
+of([
+  { id: 1, name: 'JavaScript' },
+  { id: 2, name: 'Parcel' },
+  { id: 2, name: 'webpack' },
+  { id: 1, name: 'TypeScript' },
+  { id: 3, name: 'TSLint' }
+]).pipe(
+map(x => x.find((x) => x.id == 1))
+).subscribe((x) => console.log(x));
